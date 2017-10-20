@@ -45,5 +45,12 @@ for (var i = 0; i < allPixels.length; i++) {
   p.dataset.iJewel = iJewel
   p.dataset.iPixel = iPixel
   arrangePixels(p, iJewel, iPixel)
+  p.addEventListener('click', clickSwitchFill)
   jewels[iJewel].push(p)
+}
+
+function clickSwitchFill(e) {
+  var fill = e.target.getAttribute('fill')
+  if (fill === 'black') e.target.setAttribute('fill', 'white')
+  else if (fill === 'white') e.target.setAttribute('fill', 'black')
 }
