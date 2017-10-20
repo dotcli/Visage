@@ -28,7 +28,7 @@ function arrangePixels(pixel, iJewel, iPixel) {
     pixel.setAttribute('cy', pixelCenters[iJewel][1])
     return;
   }
-  var angle = jewelAngle * (iPixel - 1)
+  var angle = jewelAngle * (iPixel - 1 + 0.5)
   var cx = pixelCenters[iJewel][0] + Math.cos(angle) * jewelRadius
   var cy = pixelCenters[iJewel][1] + Math.sin(angle) * jewelRadius
   pixel.setAttribute('cx', cx)
@@ -53,4 +53,8 @@ function clickSwitchFill(e) {
   var fill = e.target.getAttribute('fill')
   if (fill === 'black') e.target.setAttribute('fill', 'white')
   else if (fill === 'white') e.target.setAttribute('fill', 'black')
+}
+
+function fill() {
+
 }
