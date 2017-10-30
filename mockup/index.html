@@ -12,12 +12,14 @@
       color: white;
       font-family: 'Lato', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
+
     #python-data {
       display: block;
       width: 100%;
       background: black;
       color: white;
     }
+
     circle:hover {
       stroke-width: 4;
     }
@@ -31,26 +33,13 @@
     <p>
       This page imitates the three Neopixel Jewels on Visage. Experiment with animations and patterns here.
     </p>
-  
+    <svg width="600" height="500">
+      <circle v-for='(pixel, i) in pixels' @click='setPixelColor' r="10" :cx='pixel.x' :cy='pixel.y' :fill='pixel.fill' :data-index='i'
+        stroke='grey' stroke-width='0'></circle>
+    </svg>
+
     <div>Python Data:</div>
     <textarea id="python-data" rows="3">{{ pythonCode }}</textarea>
-  
-  
-    <svg width="800" height="800">
-
-      <circle
-        v-for='(pixel, i) in pixels'
-        @click='setPixelColor'
-        r="10"
-        :cx='pixel.x'
-        :cy='pixel.y'
-        :fill='pixel.fill'
-        :data-index='i'
-        stroke='grey'
-        stroke-width='0'
-      ></circle>
-
-    </svg>
   </div>
 
   <script src="main.js"></script>
