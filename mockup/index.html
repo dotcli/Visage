@@ -6,24 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Animation Mockups</title>
-  <style>
-    body {
-      background: black;
-      color: white;
-      font-family: 'Lato', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-
-    #python-data {
-      display: block;
-      width: 100%;
-      background: black;
-      color: white;
-    }
-
-    circle:hover {
-      stroke-width: 4;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
   <script src="vendor/vue.js"></script>
   <script src="vendor/tinycolor.js"></script>
 </head>
@@ -40,6 +23,26 @@
 
     <div>Python Data:</div>
     <textarea id="python-data" rows="3">{{ pythonCode }}</textarea>
+
+    <div id="palette-container" :class='{ open: paletteOpen }'>
+      <div class='palette-toggle' @click='togglePalette'>{{paletteOpen?'Close':'Palette'}}</div>
+      <div class='palette'>
+        <div class='palette-info'>
+          <span>name</span>
+          <span>color</span>
+        </div>
+        <div v-for='(color, i) in colors' :data-index='i' @click='setActiveColor' class='color'>
+          <div class='color-selected'>
+            <span>{{ i === activeColorIndex?"•":"" }}</span>
+          </div>
+          <input v-model='color.name' class='color-name-input' type="text" name="name">:
+          <input v-model='color.color' class='color-input' type="text" name="color">
+          <div class='color-display' :style='{background: color.color}'></div>
+        </div>
+        <div class='btn-new-color' @click='addNewColor'>[+] new color</div>
+        <div class='btn-del-color' @click='deleteColor'>[-] del color</div>
+      </div>
+    </div>
   </div>
 
   <script src="main.js"></script>

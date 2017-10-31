@@ -1,0 +1,85 @@
+body {
+  background: black;
+  color: #aaa;;
+  font-family: monospace;
+  text-transform: uppercase;
+}
+input, textarea {
+  background: black;
+  color: #aaa;
+  border-color: #444;
+  font-family: monospace;
+}
+input {
+  border-style: none;
+  border-bottom-style: solid;
+}
+circle:hover {
+  stroke-width: 4;
+}
+
+#python-data {
+  display: block;
+  width: calc(100% - 100px);
+  margin-top: 0.5em;
+}
+
+#palette-container {
+  position: fixed;
+  display: flex;
+  top: 10vh;
+  right: -210px;
+  transition: all 0.3s ease-out;
+}
+.palette-toggle {
+  display: inline-block;
+  font-weight: bold;
+  width: 5em;
+  height: 3.3em;
+  line-height: 3.3em;
+  text-align: center;
+  background: #666;
+  color: black;
+}
+
+#palette-container.open {
+  right: 0;
+}
+.palette {
+  display: inline-block;
+  width: 210px;
+  background: #222;
+  padding: 1em 1em 1em 2em;
+  box-sizing: border-box;
+}
+.palette-info {
+  display: flex;
+  justify-content: space-between;
+}
+.color {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0.2em 0;
+  position: relative;
+}
+.color-selected {
+  position: absolute;
+  left: -1.6em;
+  width: 1.2em;
+  text-align: center;
+  color: white;
+}
+.color-display {
+  display: inline-block;
+  min-width: 1em;
+  min-height: 1em;
+  border: 1px solid #aaa;
+}
+.color-name-input, .color-input {
+  max-width: 5em;
+}
+.btn-new-color, .btn-del-color {
+  text-align: center;
+  margin-top: 1em;
+}
