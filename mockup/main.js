@@ -32,7 +32,16 @@ new Vue({
         if (color.isValid() === false) throw new Error('pixel fill is not valid color', p.fill);
         return [color._r, color._g, color._b];
       });
-      return JSON.stringify(pixelColors);
+      var code = JSON.stringify(pixelColors);
+      // use tuple instead of array
+      var openingRegex = /\[/g;
+      var closingRegex = /\]/g;
+      // convert all brackets to parenthesis
+      code = code.replace(openingRegex, "(");
+      code = code.replace(closingRegex, ")");
+      // convert first and last parenthesis back to brackets
+      code = "[" + code.slice(1, -1) + "]";
+      return code;
     }
   },
   created: function () {
